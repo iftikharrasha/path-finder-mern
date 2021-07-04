@@ -1,0 +1,22 @@
+.btn-tag-1 {
+    font-family: 'AxiformaMedium', sans-serif;
+    background-image: linear-gradient(rgb(82, 82, 82), rgb(38, 38, 38));
+    box-shadow: rgb(0 0 0 / 36%) 1px 4px 4px, rgb(0 0 0 / 40%) 0px -5px 0px inset;
+    border-bottom-color: rgb(229, 229, 229);
+    padding: 10px 30px;
+    border-radius: 8px;
+    color: white;
+}
+
+.btn-tag-1:hover {
+    background-image: linear-gradient(#171717, #262626);
+    color:white;
+}
+
+.brand{
+    display: inline-block;
+}
+
+.login-btn a i{
+    font-size: 14px;
+}

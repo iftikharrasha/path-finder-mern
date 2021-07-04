@@ -1,0 +1,9 @@
+.hero-bg{
+    background-color: rgb(132 99 184 / 10%);
+    padding: 100px 50px;
+    border-radius: 1.5rem;
+}
+
+.hero-left, .hero-right{
+    width: 50%;
+}
