@@ -7,7 +7,7 @@ const Login = () => {
         <>
             <section className="login">
             <div className="d-flex align-items-center justify-content-center">
-                <div className="login-form">
+                <div className="login-form bg-tag-1">
                     <div className="text-center">
                     <h2 className="mt-3 text-center">Login to 
                         <b className="font-bold"> Find Route
@@ -17,13 +17,13 @@ const Login = () => {
                     <form className="form">
                         <div className="inputs my-4">
                             <div className="input-field">
-                                <input className="px-4 py-3 mb-2 text-black border border-transparent rounded" type="text" maxlength="11" placeholder="Enter Email"/>
+                                <input className="px-4 py-3 mb-2 text-black border border-transparent rounded" type="text" name="email" placeholder="Enter Email" autoComplete="on"/>
                                 <div className="input-icon">
                                     <i className="fa fa-envelope i-envelope" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div className="input-field my-3">
-                                <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded" placeholder="Enter Password"/>
+                                <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded" name="password" placeholder="Enter Password" autoComplete="on"/>
                                 <div className="input-icon">
                                     <i className="fa fa-key i-key" aria-hidden="true"></i>
                                 </div>
@@ -32,7 +32,7 @@ const Login = () => {
                         <div className="mb-3">
                             <div className="d-flex justify-content-between">
                                 <div>
-                                    <input type="checkbox" className="w-4 h-4 form-checkbox" value="allUsers"/>
+                                    <input type="checkbox" className="w-4 h-4 form-checkbox" value="allUsers" autoComplete="on"/>
                                     <span className="ml-2">Remember Password
                                     </span>
                                 </div>

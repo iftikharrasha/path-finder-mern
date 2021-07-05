@@ -46,3 +46,8 @@ a, select , input , textarea , button{
 .c_custom{
   max-width: 1440px !important;
 }
+
+/* bg */
+.bg-tag-1{
+  background-color: rgba(245,245,245,1);
+}

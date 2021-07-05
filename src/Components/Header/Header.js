@@ -17,6 +17,10 @@ const Header = () => {
                                 </Link>
                             </div>
                             <div className="login-btn float-right">
+                                {/* <Link to="/login">
+                                    <i className="fa fa fa-user"></i>
+                                    <span className="ml-2">Iftikhar Rasha</span>
+                                </Link> */}
                                 <Link to="/login" className="btn-tag-1">
                                     <i className="fa fa fa-user"></i>
                                     <span className="ml-2">Login</span>
