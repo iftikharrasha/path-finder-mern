@@ -1,4 +1,4 @@
-import { React, lazy, Suspense } from 'react';
+import { React, lazy, Suspense, createContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,67 +20,80 @@ import Login from './Components/Login/Login.js';
 import SignUp from './Components/SignUp/SignUp.js';
 import Footer from './Components/Footer/Footer.js';
 import RideSearch from './Components/RideSearch/RideSearch.js';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 const Home = lazy(() => import('./Components/Home/Home.js'));
 const NotFound = lazy(() => import('./Components/NotFound/NotFound'));
 
+export const UserContext = createContext();
 
 function App() {
-  return (
-    <div className="App">
-        <Router>
-            <ScrollToTop>
-                 <Route render={({location}) => (
-                     <TransitionGroup>
-                        <CSSTransition
-                        key={location.key}
-                        timeout={300}
-                        classNames="fade"
-                        >
-                          <Suspense fallback={<LazyLoad></LazyLoad>}>
-                              <Switch location={location}>
-                                  <Route exact path="/">
-                                      <Header></Header>
-                                      <Home></Home>
-                                      <GetRide></GetRide>
-                                      <Footer></Footer>
-                                  </Route>
-                                  <Route path="/home">
-                                      <Header></Header>
-                                      <Home></Home>
-                                      <GetRide></GetRide>
-                                      <Footer></Footer>
-                                  </Route>
-                                  <Route path="/login">
-                                      <Header></Header>
-                                      <Login></Login>
-                                      <Footer></Footer>
-                                  </Route>
-                                  <Route path="/signup">
-                                      <Header></Header>
-                                      <SignUp></SignUp>
-                                      <Footer></Footer>
-                                  </Route>
-                                  <Route path="/ride-search">
-                                      <Header></Header>
-                                      <RideSearch></RideSearch>
-                                      <Footer></Footer>
-                                  </Route>
-                                  <Route path="/ride-search/:userKey">
-                                      <NotFound></NotFound>
-                                  </Route>
-                                  <Route path="*">
-                                      <NotFound></NotFound>
-                                  </Route>
-                              </Switch>
-                            </Suspense>
-                        </CSSTransition>
-                    </TransitionGroup>
-                 )} />
-            </ScrollToTop>
-        </Router>
-    </div>
-  );
-}
+    const [loggedInUser, setLoggedInUser] = useState({
+        isSignedIn: false,
+        email: '',
+        name: '',
+        photo: ''
+    });
+
+    return (
+        <div className="App">
+
+            <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+                <Router>
+                    <ScrollToTop>
+                        <Route render={({location}) => (
+                            <TransitionGroup>
+                                <CSSTransition
+                                key={location.key}
+                                timeout={300}
+                                classNames="fade"
+                                >
+                                <Suspense fallback={<LazyLoad></LazyLoad>}>
+                                    <Switch location={location}>
+                                        <Route exact path="/">
+                                            <Header></Header>
+                                            <Home></Home>
+                                            <GetRide></GetRide>
+                                            <Footer></Footer>
+                                        </Route>
+                                        <Route path="/home">
+                                            <Header></Header>
+                                            <Home></Home>
+                                            <GetRide></GetRide>
+                                            <Footer></Footer>
+                                        </Route>
+                                        <Route path="/login">
+                                            <Header></Header>
+                                            <Login></Login>
+                                            <Footer></Footer>
+                                        </Route>
+                                        <Route path="/signup">
+                                            <Header></Header>
+                                            <SignUp></SignUp>
+                                            <Footer></Footer>
+                                        </Route>
+                                        <PrivateRoute path="/ride-search">
+                                            <Header></Header>
+                                            <RideSearch></RideSearch>
+                                            <Footer></Footer>
+                                        </PrivateRoute>
+                                        {/* <Route path="/ride-search/:userKey">
+                                            <NotFound></NotFound>
+                                        </Route> */}
+                                        <Route path="*">
+                                            <NotFound></NotFound>
+                                        </Route>
+                                    </Switch>
+                                    </Suspense>
+                                </CSSTransition>
+                            </TransitionGroup>
+                        )} />
+                    </ScrollToTop>
+                </Router>
+            </UserContext.Provider>
+
+        </div>
+    );
+    }
 
 export default App;

@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import facebook from '../../img/facebook.svg';
+import google from '../../img/google.svg';
 import './Login.css';
+import firebase from "firebase/app";
+import "firebase/analytics";
+import "firebase/auth";
+import firebaseConfig from "./firebase.config";
+
+import {UserContext} from "../../App";
 
 const Login = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
+
+    if(firebase.apps.length === 0){
+        firebase.initializeApp(firebaseConfig);
+    }
+
+    const handleGoogleSignIn = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            const user = result.user;
+            const {displayName, email, photoURL} = user;
+            const signedInUser = {
+                isSignedIn: true,
+                email: email,
+                photo: photoURL,
+                name: (displayName.split(' '))[0]
+            };
+
+            console.log(user);
+            // console.log(signedInUser);
+
+            setLoggedInUser(signedInUser);
+            history.replace(from);
+        }).catch((error) => {
+            const errorMessage = error.message;
+            console.log(errorMessage);
+        });
+    }
+
     return (
         <>
             <section className="login">
@@ -52,6 +98,30 @@ const Login = () => {
                 </div>
                 </div>
 
+                <Container className="mt-5">
+                    <Row>
+                        <Col md={4} className="offset-md-4">
+                            <Row>
+                                <Col md={12}>
+                                    <div className="social-login d-block">
+                                        <button onClick={handleGoogleSignIn}>
+                                            <img src={google} alt="google"/>
+                                            <span className="ml-2">Continue with Google</span> 
+                                        </button>
+                                    </div>
+                                </Col>
+                                <Col md={12} className="mt-3">
+                                    <div className="social-login">
+                                        <button onClick={handleGoogleSignIn}>
+                                            <img src={facebook} alt="facebook"/>
+                                            <span className="ml-2">Continue with Facebook</span> 
+                                        </button>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container>
             </section>
         </>
     );

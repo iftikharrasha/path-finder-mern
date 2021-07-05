@@ -50,6 +50,18 @@
     font-size: 1.125rem;
 }
 
+.social-login{
+}
+
+.social-login button{
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #C7C7C7;
+    box-sizing: border-box;
+    border-radius: 57px;
+    padding: 10px 30px;
+}
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .login {
