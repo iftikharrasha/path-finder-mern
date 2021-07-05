@@ -6,7 +6,7 @@ import './Home.css';
 const Home = () => {
     return (
         <>
-            <section className="hero rounded py-5">
+            <section className="hero rounded py-5" id="home">
                 <Container className="c_custom">
                     <div className="hero-bg">
                         <Row>
@@ -21,7 +21,7 @@ const Home = () => {
                                     <p className="py-3">Experience the smooth and hassle free regular life.
                                     </p>
                                     <div className="login-btn">
-                                        <a href="#" className="btn-tag-1">
+                                        <a href="#getride" className="btn-tag-1">
                                             <i className="fa fa fa-search"></i>
                                             <span className="ml-2">Find a ride</span>
                                         </a>

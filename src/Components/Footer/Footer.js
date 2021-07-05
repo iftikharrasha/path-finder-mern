@@ -11,7 +11,7 @@ const Footer = () => {
                 <Row>
                     <Col>
                         <div className="footer-items">
-                            <a href="/">
+                            <a href="#home">
                                 <img src={logo} className="img-fluid w-25" alt="pathfinder"/>
                             </a>
                             <h6>©2021 Iftikhar Rasha</h6>

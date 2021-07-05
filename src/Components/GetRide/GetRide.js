@@ -4,12 +4,13 @@ import scooter from '../../img/scooter.webp';
 import wnsave from '../../img/wnsave.webp';
 import transit from '../../img/transit.webp';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './GetRide.css';
 
 const GetRide = () => {
     return (
         <>
-            <section className="get-ride py-5">
+            <section className="get-ride py-5" id="getride">
                 <Container className="c_custom">
                         <Row>
                             <Col md={12}>
@@ -18,7 +19,7 @@ const GetRide = () => {
                             </Col>
                             <Col md={12} className="mt-5">
                             <div className="d-flex align-items-center justify-content-between">
-                                <a href="/">
+                                <Link to="/ride-search">
                                     <div className="rides">
                                         <div className="ride-item">
                                             <h3 className="text-center">Rentals
@@ -36,8 +37,8 @@ const GetRide = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="/">
+                                </Link>
+                                <Link to="/ride-search">
                                     <div className="rides">
                                         <div className="ride-item">
                                             <h3 className="text-center">Bike & Scoots
@@ -55,8 +56,8 @@ const GetRide = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="/">
+                                </Link>
+                                <Link to="/ride-search">
                                     <div className="rides">
                                         <div className="ride-item">
                                             <h3 className="text-center">Wait & Save
@@ -74,8 +75,8 @@ const GetRide = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="/">
+                                </Link>
+                                <Link to="/ride-search">
                                     <div className="rides">
                                         <div className="ride-item">
                                             <h3 className="text-center">Transit
@@ -93,7 +94,7 @@ const GetRide = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
 
                             </Col>

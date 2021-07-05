@@ -13,11 +13,17 @@ import {
 } from 'react-transition-group';
 import LazyLoad from './Components/LayLoadSpinner/LazyLoadSpinner';
 import './App.css';
-import Home from './Components/Home/Home.js';
+
 import Header from './Components/Header/Header.js';
 import GetRide from './Components/GetRide/GetRide.js';
+import Login from './Components/Login/Login.js';
+import SignUp from './Components/SignUp/SignUp.js';
 import Footer from './Components/Footer/Footer.js';
+import RideSearch from './Components/RideSearch/RideSearch.js';
+
+const Home = lazy(() => import('./Components/Home/Home.js'));
 const NotFound = lazy(() => import('./Components/NotFound/NotFound'));
+
 
 function App() {
   return (
@@ -31,34 +37,43 @@ function App() {
                         timeout={300}
                         classNames="fade"
                         >
-                            <Switch location={location}>
-                                <Route path="/home">
-                                        <Suspense fallback={<LazyLoad></LazyLoad>}>
-                                            <Header></Header>
-                                            <Home></Home>
-                                            <GetRide></GetRide>
-                                            <Footer></Footer>
-                                        </Suspense>
-                                </Route>
-                                <Route path="/profile/:outletKey">
-                                        <Suspense fallback={<LazyLoad></LazyLoad>}>
-                                          <NotFound></NotFound>
-                                        </Suspense>
-                                </Route>
-                                <Route exact path="/">
-                                        <Suspense fallback={<LazyLoad></LazyLoad>}>
-                                            <Header></Header>
-                                            <Home></Home>
-                                            <GetRide></GetRide>
-                                            <Footer></Footer>
-                                        </Suspense>
-                                </Route>
-                                <Route path="*">
-                                        <Suspense fallback={<LazyLoad></LazyLoad>}>
-                                            <NotFound></NotFound>
-                                        </Suspense>
-                                </Route>
-                            </Switch>
+                          <Suspense fallback={<LazyLoad></LazyLoad>}>
+                              <Switch location={location}>
+                                  <Route exact path="/">
+                                      <Header></Header>
+                                      <Home></Home>
+                                      <GetRide></GetRide>
+                                      <Footer></Footer>
+                                  </Route>
+                                  <Route path="/home">
+                                      <Header></Header>
+                                      <Home></Home>
+                                      <GetRide></GetRide>
+                                      <Footer></Footer>
+                                  </Route>
+                                  <Route path="/login">
+                                      <Header></Header>
+                                      <Login></Login>
+                                      <Footer></Footer>
+                                  </Route>
+                                  <Route path="/signup">
+                                      <Header></Header>
+                                      <SignUp></SignUp>
+                                      <Footer></Footer>
+                                  </Route>
+                                  <Route path="/ride-search">
+                                      <Header></Header>
+                                      <RideSearch></RideSearch>
+                                      <Footer></Footer>
+                                  </Route>
+                                  <Route path="/ride-search/:userKey">
+                                      <NotFound></NotFound>
+                                  </Route>
+                                  <Route path="*">
+                                      <NotFound></NotFound>
+                                  </Route>
+                              </Switch>
+                            </Suspense>
                         </CSSTransition>
                     </TransitionGroup>
                  )} />

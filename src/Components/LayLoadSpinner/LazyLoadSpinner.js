@@ -1,17 +1,13 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 import './LazyLoadSpinner.css';
+import spinner from '../../img/preloader.gif';
 
 const LazyLoadSpinner = () => {
     return (
         <>
-                <Container className="c_custom">
-                    <Row className="pt-4">
-                        <Col sm={12} className="lazy-load">
-                            <div className="my-class-2 in-progress just-a-box"></div>
-                        </Col>
-                    </Row>
-                </Container>    
+            <section className="vh-100 vw-100 d-flex justify-content-center align-items-center">
+                <img src={spinner} alt="spinner" className="img-fluid"/>
+            </section>
         </>
     );
 };
