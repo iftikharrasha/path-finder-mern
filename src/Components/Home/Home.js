@@ -13,25 +13,25 @@ const Home = () => {
                             <Col md={12} className="d-flex justify-content-between aligh-items-center">
 
                                 <Row>
-                                    <Col xl={6}>
+                                    <Col lg={6}>
                                         <div className="hero-left p-sm-5">
-                                            <h1>Find your 
+                                            <h1 className="reg-48">Find your 
                                             <strong className="font-bold"> Best Route.
                                             </strong>
                                             </h1>
-                                            <p className="pt-3">Pathfinder aims to deliver a smooth and pleasant ride searching experience and ease route finding process for both riders and passangers.
+                                            <p className="pt-3 c-tag-1 lit-14">Pathfinder aims to deliver a smooth and pleasant ride searching experience and ease route finding process for both riders and passangers.
                                             </p>
-                                            <p className="py-3">Experience the smooth and hassle free regular life.
+                                            <p className="py-3 c-tag-1 lit-14">Experience the smooth and hassle free regular life.
                                             </p>
-                                            <div className="login-btn">
-                                                <a href="#getride" className="btn-tag-1">
+                                            <div className="login-btn pt-3">
+                                                <a href="#getride" className="btn-tag-1 medi-14">
                                                     <i className="fa fa fa-search"></i>
                                                     <span className="ml-2">Find a ride</span>
                                                 </a>
                                             </div>
                                         </div>
                                     </Col>
-                                    <Col xl={6} className="mt-sm-0 mt-5">
+                                    <Col lg={6} className="mt-sm-0 mt-5 d-flex justify-content-center align-items-center">
                                         <div className="hero-right">
                                             <img src={banner} alt="Banner" className="img-fluid w-100"/>
                                         </div> 

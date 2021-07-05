@@ -17,11 +17,11 @@ const Header = () => {
                                 </Link>
                             </div>
                             <div className="login-btn float-right">
-                                {/* <Link to="/login">
+                                {/* <Link to="/login" className="medi-14">
                                     <i className="fa fa fa-user"></i>
                                     <span className="ml-2">Iftikhar Rasha</span>
                                 </Link> */}
-                                <Link to="/login" className="btn-tag-1">
+                                <Link to="/login" className="btn-tag-1 medi-14">
                                     <i className="fa fa fa-user"></i>
                                     <span className="ml-2">Login</span>
                                 </Link>

@@ -14,8 +14,8 @@ const GetRide = () => {
                 <Container className="c_custom">
                         <Row>
                             <Col md={12}>
-                                <h2>Ride. Bike. Scoot. Taxi. Train.</h2>
-                                <p className="py-3">Choose a ride that suits your mood and budget. We got your back!</p>
+                                <h2 className="reg-48"> <strong>Ride</strong> Bike. Scoot. Taxi. Train.</h2>
+                                <p className="py-3 lit-14">Choose a ride that suits your mood and budget. We got your back!</p>
                             </Col>
                             <Col md={12} className="mt-5">
 
@@ -24,7 +24,7 @@ const GetRide = () => {
                                         <Link to="/ride-search">
                                             <div className="rides">
                                                 <div className="ride-item">
-                                                    <h3 className="text-center">Rentals
+                                                    <h3 className="text-center semi-28">Rentals
                                                     </h3>
                                                     <img src={rentals} className="my-2" alt="rentals"/>
                                                     <div className="ride-extra">
@@ -45,7 +45,7 @@ const GetRide = () => {
                                         <Link to="/ride-search">
                                             <div className="rides">
                                                 <div className="ride-item">
-                                                    <h3 className="text-center">Bike & Scoots
+                                                    <h3 className="text-center semi-28">Bike & Scoots
                                                     </h3>
                                                     <img src={scooter} className="my-2" alt="scooter"/>
                                                     <div className="ride-extra">
@@ -66,7 +66,7 @@ const GetRide = () => {
                                         <Link to="/ride-search">
                                             <div className="rides">
                                                 <div className="ride-item">
-                                                    <h3 className="text-center">Wait & Save
+                                                    <h3 className="text-center semi-28">Wait & Save
                                                     </h3>
                                                     <img src={wnsave} className="my-2" alt="wnsave"/>
                                                     <div className="ride-extra">
@@ -87,7 +87,7 @@ const GetRide = () => {
                                         <Link to="/ride-search">
                                             <div className="rides">
                                                 <div className="ride-item">
-                                                    <h3 className="text-center">Transit
+                                                    <h3 className="text-center semi-28">Transit
                                                     </h3>
                                                     <img src={transit} className="my-2" alt="transit"/>
                                                     <div className="ride-extra">

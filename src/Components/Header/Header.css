@@ -1,5 +1,4 @@
 .btn-tag-1 {
-    font-family: 'AxiformaMedium', sans-serif;
     background-image: linear-gradient(rgb(82, 82, 82), rgb(38, 38, 38));
     box-shadow: rgb(0 0 0 / 36%) 1px 4px 4px, rgb(0 0 0 / 40%) 0px -5px 0px inset;
     border-bottom-color: rgb(229, 229, 229);
@@ -20,3 +19,30 @@
 .login-btn a i{
     font-size: 14px;
 }
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .brand {
+        display: inline;
+    }
+}
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    
+  }
+  
+  /* Medium devices(sm) (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    
+  }
+  
+  /* Large devices(md) (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+     
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+  }
+  
