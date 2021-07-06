@@ -53,7 +53,6 @@ const Header = () => {
 
                                                                 <Dropdown.Menu>
                                                                     <Link to="/ride-search" className="dropdown-item lit-14">Find Ride</Link>
-                                                                    <Link to="/home" className="dropdown-item lit-14">Settings</Link>
                                                                     <Link to="/" className="dropdown-item lit-14" onClick={handleSignOut}>Sign Out</Link>
                                                                 </Dropdown.Menu>
                                                             </Dropdown> : 

@@ -28,14 +28,11 @@ const SignUp = () => {
     const handleNormalAuth = (event) => {
         if(newUser && loggedInUser.email && loggedInUser.password){
             firebase.auth().createUserWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
-              .then((res) => {
-      
-                // Signed in 
+              .then((res) => { 
                 const newUserInfo = {...loggedInUser};
                 newUserInfo.error = '';
                 newUserInfo.success = true;
                 setLoggedInUser(newUserInfo);
-                // updateUserName(user.name);
                 history.replace(from);
               })
               .catch((error) => {
@@ -57,6 +54,24 @@ const SignUp = () => {
             const regexEm = /\S+@\S+\.\S+/;
             isFormValid = regexEm.test(event.target.value);
             // console.log(isFormValid);
+
+            if(!isFormValid){
+                const wrapper = document.getElementById('valid-icon-email');
+                wrapper.innerHTML = '';
+                const span = document.createElement('span');
+                span.innerHTML = `
+                    <i class="fas fa-times-circle i-wrong" aria-hidden="true"></i>
+                `;
+                wrapper.appendChild(span);
+            }else{
+                const wrapper = document.getElementById('valid-icon-email');
+                wrapper.innerHTML = '';
+                const span = document.createElement('span');
+                span.innerHTML = `
+                    <i class="fas fa-check-circle i-right" aria-hidden="true"></i>
+                `;
+                wrapper.appendChild(span);
+            }
         }
       
         if(event.target.name === 'password'){
@@ -66,6 +81,24 @@ const SignUp = () => {
       
             isFormValid = isPassLength && isPassNumber;
             // console.log(isFormValid);
+
+            if(!isFormValid){
+                const wrapper = document.getElementById('valid-icon-pass');
+                wrapper.innerHTML = '';
+                const span = document.createElement('span');
+                span.innerHTML = `
+                    <i class="fas fa-times-circle i-wrong" aria-hidden="true"></i>
+                `;
+                wrapper.appendChild(span);
+            }else{
+                const wrapper = document.getElementById('valid-icon-pass');
+                wrapper.innerHTML = '';
+                const span = document.createElement('span');
+                span.innerHTML = `
+                    <i class="fas fa-check-circle i-right" aria-hidden="true"></i>
+                `;
+                wrapper.appendChild(span);
+            }
         }
           
         if(isFormValid){
@@ -94,18 +127,23 @@ const SignUp = () => {
                                     <div className="input-icon">
                                         <i className="fa fa-user-plus i-envelope" aria-hidden="true"></i>
                                     </div>
+
                                 </div>
                                 <div className="input-field my-3">
                                     <input type="email" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="email" onChange={handleBlur} placeholder="Enter Your email" autoComplete="on" required/>
                                     <div className="input-icon">
                                         <i className="fa fa-envelope i-user" aria-hidden="true"></i>
                                     </div>
+                                    {/* validation icon check */}
+                                    <div className="input-field" id="valid-icon-email"></div>
                                 </div>
                                 <div className="input-field my-3">
                                     <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="password" onChange={handleBlur} placeholder="Enter Password" autoComplete="on" required/>
                                     <div className="input-icon">
                                         <i className="fa fa-key i-key" aria-hidden="true"></i>
                                     </div>
+                                    {/* validation icon check */}
+                                    <div className="input-field" id="valid-icon-pass"></div>
                                 </div>
                                 <div className="input-field my-3">
                                     <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="re-password" placeholder="Confirm Password" autoComplete="on" required/>

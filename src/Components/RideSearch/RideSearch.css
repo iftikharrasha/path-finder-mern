@@ -7,11 +7,6 @@
     text-align: right;
 }
 
-.map iframe{
-    border: 0;
-    border-radius: .5rem;
-}
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .ride-bg {

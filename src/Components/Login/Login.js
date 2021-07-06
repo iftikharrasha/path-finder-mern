@@ -85,8 +85,6 @@ const Login = () => {
         if(!newUser && loggedInUser.email && loggedInUser.password){
             firebase.auth().signInWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
               .then((res) => {
-                console.log('Signed in before', loggedInUser);
-      
                 const newUserInfo = {...loggedInUser};
                 newUserInfo.error = '';
                 newUserInfo.isSignedIn = true;
@@ -96,7 +94,7 @@ const Login = () => {
 
                 setLoggedInUser(newUserInfo);
                 history.replace(from);
-                console.log('Signed in user info', loggedInUser);
+                // console.log('Signed in user info', loggedInUser);
               })
               .catch((error) => {
                 const newUserInfo = {...loggedInUser};
@@ -110,7 +108,7 @@ const Login = () => {
 
     //form validation part
     const handleBlur = (event) => {
-        console.log(event.target.name, event.target.value);
+        // console.log(event.target.name, event.target.value);
 
         let isFormValid;
         if(event.target.name === 'email'){
@@ -140,7 +138,7 @@ const Login = () => {
             <section className="login">
             <div className="text-center mb-3">
                 <p style={{color: 'red'}}>{loggedInUser.error}</p>
-                { loggedInUser.success && <p className="semi-28 c-tag-1">Account {newUser ? 'Created' : 'Logged in' } Successfully!</p> }
+                { loggedInUser.success && <p className="semi-28 c-tag-1">Account Created Successfully!</p> }
             </div>
             <div className="d-flex align-items-center justify-content-center">
                 <div className="login-form bg-tag-1">
@@ -153,13 +151,13 @@ const Login = () => {
                     <form className="form" onSubmit={handleNormalAuth}>
                         <div className="inputs my-4">
                             <div className="input-field">
-                                <input className="px-4 py-3 mb-2 text-black border border-transparent rounded lit-14" type="text" name="email" onChange={handleBlur} placeholder="Enter Email" autoComplete="on"/>
+                                <input className="px-4 py-3 mb-2 text-black border border-transparent rounded lit-14" type="text" name="email" onChange={handleBlur} placeholder="Enter Email" autoComplete="on" required/>
                                 <div className="input-icon">
                                     <i className="fa fa-envelope i-envelope" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div className="input-field my-3">
-                                <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="password" onChange={handleBlur} placeholder="Enter Password" autoComplete="on"/>
+                                <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="password" onChange={handleBlur} placeholder="Enter Password" autoComplete="on" required/>
                                 <div className="input-icon">
                                     <i className="fa fa-key i-key" aria-hidden="true"></i>
                                 </div>

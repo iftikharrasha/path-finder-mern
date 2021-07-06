@@ -26,6 +26,24 @@
     top: 18px;
 }
 
+.input-field span .i-wrong {
+    position: absolute;
+    padding-left: 15px;
+    top: -45px;
+    right: 12px;
+    color: red;
+    font-size: 1.2rem;
+}
+
+.input-field span .i-right {
+    position: absolute;
+    padding-left: 15px;
+    top: -45px;
+    right: 12px;
+    color: green;
+    font-size: 1.2rem;
+}
+
 .input-field .i-key {
     position: absolute;
     padding-left: 15px;
