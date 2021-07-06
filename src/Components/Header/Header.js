@@ -19,7 +19,9 @@ const Header = () => {
             isSignedIn: false,
             name: '',
             email: '',
-            photo: ''
+            photo: '',
+            success: false,
+            error: ''
           }
           setLoggedInUser(signedOutUser);
         }).catch((error) => {

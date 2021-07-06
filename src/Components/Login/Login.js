@@ -12,20 +12,23 @@ import firebaseConfig from "./firebase.config";
 
 import {UserContext} from "../../App";
 
+if(firebase.apps.length === 0){
+    firebase.initializeApp(firebaseConfig);
+}else{
+    firebase.app();
+}
+
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const fbProvider = new firebase.auth.FacebookAuthProvider();
 
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
 
-    if(firebase.apps.length === 0){
-        firebase.initializeApp(firebaseConfig);
-    }
-
     const handleGoogleSignIn = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
+    //google sign in auth
     firebase.auth()
         .signInWithPopup(provider)
         .then((result) => {
@@ -35,6 +38,7 @@ const Login = () => {
                 isSignedIn: true,
                 email: email,
                 photo: photoURL,
+                success: true,
                 name: (displayName.split(' '))[0]
             };
 
@@ -49,9 +53,41 @@ const Login = () => {
         });
     }
 
+    
+    
+    const handleFacebookSignIn = () => {
+        //facebook sign in auth
+        firebase
+            .auth()
+            .signInWithPopup(fbProvider)
+            .then((result) => {
+              /** @type {firebase.auth.OAuthCredential} */
+              const user = result.user;
+              const {displayName, email, photoURL} = user;
+              const signedInUser = {
+                isSignedIn: true,
+                email: email,
+                photo: photoURL,
+                name: (displayName.split(' '))[0]
+              };
+              console.log(user);
+
+              setLoggedInUser(signedInUser);
+              history.replace(from);
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
     return (
         <>
             <section className="login">
+            <div className="text-center mb-3">
+                <p style={{color: 'red'}}>{loggedInUser.error}</p>
+                { loggedInUser.success && <p className="semi-28 c-tag-1">Account Created Successfully!</p> }
+            </div>
             <div className="d-flex align-items-center justify-content-center">
                 <div className="login-form bg-tag-1">
                     <div className="text-center">
@@ -112,7 +148,7 @@ const Login = () => {
                                 </Col>
                                 <Col md={12} className="mt-3">
                                     <div className="social-login">
-                                        <button onClick={handleGoogleSignIn}>
+                                        <button onClick={handleFacebookSignIn}>
                                             <img src={facebook} alt="facebook"/>
                                             <span className="ml-2">Continue with Facebook</span> 
                                         </button>

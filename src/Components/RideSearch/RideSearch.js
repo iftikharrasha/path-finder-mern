@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import './RideSearch.css';
 
 const RideSearch = () => {

@@ -32,7 +32,9 @@ function App() {
         isSignedIn: false,
         email: '',
         name: '',
-        photo: ''
+        photo: '',
+        success: false,
+        error: ''
     });
 
     return (

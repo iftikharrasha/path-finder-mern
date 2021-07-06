@@ -1,13 +1,79 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import facebook from '../../img/facebook.svg';
 import google from '../../img/google.svg';
 import './SignUp.css';
 
+import firebase from "firebase/app";
+import {UserContext} from "../../App";
+
 const SignUp = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [newUser, setNewUser] = useState(false);
+
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/login" } };
+
     const handleGoogleSignIn = () => {
 
+    }
+
+    const handleFacebookSignIn = () => {
+
+    }
+
+    const handleNormalAuth = (event) => {
+        if(newUser && loggedInUser.email && loggedInUser.password){
+            firebase.auth().createUserWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
+              .then((res) => {
+      
+                // Signed in 
+                const newUserInfo = {...loggedInUser};
+                newUserInfo.error = '';
+                newUserInfo.success = true;
+                setLoggedInUser(newUserInfo);
+                // updateUserName(user.name);
+                history.replace(from);
+              })
+              .catch((error) => {
+                const newUserInfo = {...loggedInUser};
+                newUserInfo.error = error.message;
+                newUserInfo.success = false;
+                setLoggedInUser(newUserInfo);
+              });
+        }
+        event.preventDefault(); //preventing reloading the page
+    }
+
+    //form validation part
+    const handleBlur = (event) => {
+        console.log(event.target.name, event.target.value);
+
+        let isFormValid;
+        if(event.target.name === 'email'){
+            const regexEm = /\S+@\S+\.\S+/;
+            isFormValid = regexEm.test(event.target.value);
+            // console.log(isFormValid);
+        }
+      
+        if(event.target.name === 'password'){
+            const regexPass = /\d{1}/;
+            const isPassNumber = regexPass.test(event.target.value);
+            const isPassLength = event.target.value.length > 6;
+      
+            isFormValid = isPassLength && isPassNumber;
+            // console.log(isFormValid);
+        }
+          
+        if(isFormValid){
+            const newUserInfo = {...loggedInUser};
+            newUserInfo[event.target.name] = event.target.value;
+            setLoggedInUser(newUserInfo);
+            setNewUser(true);
+        }
     }
 
     return (
@@ -21,28 +87,28 @@ const SignUp = () => {
                             </b>
                         </h2>
                         </div>
-                        <form className="form">
+                        <form className="form" onSubmit={handleNormalAuth}>
                             <div className="inputs my-4">
                                 <div className="input-field">
-                                    <input className="px-4 py-3 mb-2 text-black border border-transparent rounded lit-14" type="text" name="name" placeholder="Enter Your name" autoComplete="on"/>
+                                    <input className="px-4 py-3 mb-2 text-black border border-transparent rounded lit-14" type="text" name="name" onChange={handleBlur} placeholder="Enter Your name" autoComplete="on" required/>
                                     <div className="input-icon">
                                         <i className="fa fa-user-plus i-envelope" aria-hidden="true"></i>
                                     </div>
                                 </div>
                                 <div className="input-field my-3">
-                                    <input type="email" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="email" placeholder="Enter Your email" autoComplete="on"/>
+                                    <input type="email" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="email" onChange={handleBlur} placeholder="Enter Your email" autoComplete="on" required/>
                                     <div className="input-icon">
                                         <i className="fa fa-envelope i-user" aria-hidden="true"></i>
                                     </div>
                                 </div>
                                 <div className="input-field my-3">
-                                    <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="password" placeholder="Enter Password" autoComplete="on"/>
+                                    <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="password" onChange={handleBlur} placeholder="Enter Password" autoComplete="on" required/>
                                     <div className="input-icon">
                                         <i className="fa fa-key i-key" aria-hidden="true"></i>
                                     </div>
                                 </div>
                                 <div className="input-field my-3">
-                                    <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="re-password" placeholder="Confirm Password" autoComplete="on"/>
+                                    <input type="password" className="px-4 py-3 mt-1 mb-2 text-black border border-transparent rounded lit-14" name="re-password" placeholder="Confirm Password" autoComplete="on" required/>
                                     <div className="input-icon">
                                         <i className="fa fa-key i-key" aria-hidden="true"></i>
                                     </div>
@@ -57,6 +123,7 @@ const SignUp = () => {
                                 </Link>
                             </div>
                         </form>
+
                     </div>
                 </div>
 
@@ -74,7 +141,7 @@ const SignUp = () => {
                                 </Col>
                                 <Col md={12} className="mt-3">
                                     <div className="social-login">
-                                        <button onClick={handleGoogleSignIn}>
+                                        <button onClick={handleFacebookSignIn}>
                                             <img src={facebook} alt="facebook"/>
                                             <span className="ml-2">Continue with Facebook</span> 
                                         </button>
