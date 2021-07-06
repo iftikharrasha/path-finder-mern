@@ -50,7 +50,7 @@ const SignUp = () => {
 
     //form validation part
     const handleBlur = (event) => {
-        console.log(event.target.name, event.target.value);
+        // console.log(event.target.name, event.target.value);
 
         let isFormValid;
         if(event.target.name === 'email'){

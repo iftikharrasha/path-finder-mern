@@ -45,10 +45,10 @@ const Header = () => {
                                 {
                                     loggedInUser.isSignedIn ? <Dropdown>
                                                                 <Dropdown.Toggle variant="" id="dropdown-basic" className="d-flex align-items-center">
-                                                                    <span class="avatar mr-3">
-                                                                        <img alt="avatar" src={loggedInUser.photo}/>
+                                                                    <span className="avatar mr-2">
+                                                                        <img alt={loggedInUser.name} src={loggedInUser.photo}/>
                                                                     </span>
-                                                                    <span class="mb-0">{loggedInUser.name}</span>
+                                                                    <span className="mb-0">{loggedInUser.name}</span>
                                                                 </Dropdown.Toggle>
 
                                                                 <Dropdown.Menu>
