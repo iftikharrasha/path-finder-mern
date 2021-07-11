@@ -74,14 +74,11 @@ function App() {
                                             <SignUp></SignUp>
                                             <Footer></Footer>
                                         </Route>
-                                        <PrivateRoute path="/ride-search">
+                                        <PrivateRoute path="/ride-search/:userKey">
                                             <Header></Header>
                                             <RideSearch></RideSearch>
                                             <Footer></Footer>
                                         </PrivateRoute>
-                                        {/* <Route path="/ride-search/:userKey">
-                                            <NotFound></NotFound>
-                                        </Route> */}
                                         <Route path="*">
                                             <NotFound></NotFound>
                                         </Route>

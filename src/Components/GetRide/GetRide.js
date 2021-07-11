@@ -21,7 +21,7 @@ const GetRide = () => {
 
                                 <Row className="d-flex align-items-center justify-content-center">
                                     <Col xl={3} lg={4} sm={6} className="d-flex align-items-center justify-content-center">
-                                        <Link to="/ride-search">
+                                        <Link to={"/ride-search/"+'rentals'}>
                                             <div className="rides">
                                                 <div className="ride-item">
                                                     <h3 className="text-center semi-28">Rentals
@@ -42,7 +42,7 @@ const GetRide = () => {
                                         </Link>
                                     </Col>
                                     <Col xl={3} lg={4} sm={6} className="d-flex align-items-center justify-content-center mt-sm-0 mt-5">
-                                        <Link to="/ride-search">
+                                        <Link to={"/ride-search/"+'bike-n-scoots'}>
                                             <div className="rides">
                                                 <div className="ride-item">
                                                     <h3 className="text-center semi-28">Bike & Scoots
@@ -63,7 +63,7 @@ const GetRide = () => {
                                         </Link>
                                     </Col>
                                     <Col xl={3} lg={4} sm={6} className="d-flex align-items-center justify-content-center mt-lg-0 mt-5">
-                                        <Link to="/ride-search">
+                                        <Link to={"/ride-search/"+'wait-n-save'}>
                                             <div className="rides">
                                                 <div className="ride-item">
                                                     <h3 className="text-center semi-28">Wait & Save
@@ -84,7 +84,7 @@ const GetRide = () => {
                                         </Link>
                                     </Col>
                                     <Col xl={3} lg={4} sm={6} className="d-flex align-items-center justify-content-center mt-xl-0 mt-5">
-                                        <Link to="/ride-search">
+                                        <Link to={"/ride-search/"+'transit'}>
                                             <div className="rides">
                                                 <div className="ride-item">
                                                     <h3 className="text-center semi-28">Transit
