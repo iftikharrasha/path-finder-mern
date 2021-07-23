@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 /src/Components/Login/firebase.config.js
-.vscode/
 
 # testing
 /coverage
