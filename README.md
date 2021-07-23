@@ -1,12 +1,13 @@
 ### `PATH FINDER - Ride Searching Web App`
+[Live Link](https://path-finder-mern.web.app).
 
 <p align="center">
   <a href="https://path-finder-mern.web.app/">
-    <img alt="Logo" src="./src/img/logo.png" width="100" />
+    <img alt="Logo" src="./src/img/pfinder.svg" width="100" />
   </a>
 </p>
 <h1 align="center">
-  PATH FINDER - [Live Link](https://path-finder-mern.web.app).
+  PATH FINDER
 </h1>
 <p align="center">
   Built using <a href="https://reactjs.org/" target="_blank">React JS</a> and hosted on <a href="https://firebase.google.com/" target="_blank">firebase</a> with firebase authentication.
@@ -14,7 +15,7 @@
 
 ![hero](./src/img/path-finder-ui.jpg)
 
-## 🚀 Installing
+## 🚀 Installation
 
 1.  Clone the repository and change directories
 
