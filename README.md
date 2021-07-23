@@ -1,5 +1,4 @@
-### `PATH FINDER - Ride Searching Web App`
-[Live Link](https://path-finder-mern.web.app).
+### `PATH FINDER - Ride Searching Web App -` [Live Link](https://path-finder-mern.web.app).
 
 <p align="center">
   <a href="https://path-finder-mern.web.app/">
